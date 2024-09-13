@@ -1,8 +1,9 @@
 /* Crie um algoritmo usando funções que faça uma leitura de 10 letras em um vetor, e após verificar 
 quantas vogais foram lidas e mostre somente consoantes no alert. */
 const letras = lerLetras(10);
-const { consoantes, vogais } = separarConsoantes(letras);
-exibirConsoantes(consoantes, vogais);
+const consoantes = separarConsoantes(letras);
+const vogais = separarVogais(letras);
+exibirSeparacao(consoantes, vogais);
 
 function lerLetras(quantidade) {
     let letras = [];
@@ -15,28 +16,39 @@ function lerLetras(quantidade) {
 
 function separarConsoantes(letras) {
     let consoantes = [];
-    let vogais = [];
     for (let j = 0; j < letras.length; j++) {
-        if (letras[j] === "A" ||
-             letras[j] === "E" ||
-              letras[j] === "I" ||
-               letras[j] === "O" ||
-                letras[j] === "U") {
-            vogais.push(letras[j]);
-        } else {
+        if (letras[j] !== "A" &&
+            letras[j] !== "E" &&
+            letras[j] !== "I" &&
+            letras[j] !== "O" &&
+            letras[j] !== "U") {
             consoantes.push(letras[j]);
         }
     }
-    return { consoantes, vogais };
+    return consoantes;
 }
 
-function exibirConsoantes(consoantes, vogais) {
+function separarVogais(letras) {
+    let vogais = [];
+    for (let k = 0; k < letras.length; k++) {
+        if (letras[k] === "A" ||
+            letras[k] === "E" ||
+            letras[k] === "I" ||
+            letras[k] === "O" ||
+            letras[k] === "U") {
+            vogais.push(letras[k]);
+        }
+    }
+    return vogais;
+}
+
+function exibirSeparacao(consoantes, vogais) {
     let mensagem = `Algoritmo de dez letras: \nForam lidas ${vogais.length} vogais!\n`;
-    for (let i = 0; i < consoantes.length; i++) {
-        mensagem += consoantes[i];
-        if (i === consoantes.length - 1) {
+    for (let l = 0; l < consoantes.length; l++) {  // Usando 'l' aqui
+        mensagem += consoantes[l];
+        if (l === consoantes.length - 1) {
             mensagem += "";
-        } else if (i === consoantes.length - 2) {
+        } else if (l === consoantes.length - 2) {
             mensagem += " e ";
         } else {
             mensagem += ", ";
