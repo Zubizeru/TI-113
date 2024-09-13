@@ -50,6 +50,6 @@ function exibirCadastro(nomes, salarios, salariosLiquidos) {
         mensagem += `<b>Salário bruto</b>: R$${salarios[i].toFixed(2)}<br>`;
         mensagem += `<b>Salário líquido</b>: R$${salariosLiquidos[i].toFixed(2)}<br><br>`;
     }
-    
+
     document.write(mensagem);
 }

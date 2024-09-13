@@ -24,7 +24,7 @@ function lerNotas(quantidade) {
                 }
             }
         } while (entrada === "" || isNaN(nota));
-        notas.push(nota); 
+        notas.push(nota);
     }
     return notas;
 }

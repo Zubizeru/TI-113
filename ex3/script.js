@@ -11,7 +11,7 @@ function principal3() {
 
 function lerLetras(quantidade) {
     let letras = [];
-    
+
     for (let i = 0; i < quantidade; i++) {
         let letra;
         do {
@@ -22,7 +22,9 @@ function lerLetras(quantidade) {
             $: Este é outro ancorador, mas indica o fim da string deve ser verificado.
             .test(): É uma função disponível em objetos de expressão regular em JavaScript. 
             Ele é usado para verificar se uma string corresponde ao padrão definido pelo regex. */
-            if (letra.length !== 1 || !/^[A-Z]$/.test(letra)) {
+            if (letra == "") {
+                alert("Espaço em branco. Por favor, digite uma única letra de A a Z.");
+            } else if (letra.length !== 1 || !/^[A-Z]$/.test(letra)) {
                 alert("Entrada inválida. Por favor, digite uma única letra de A a Z.");
             } else {
                 letras.push(letra);
@@ -36,10 +38,14 @@ function lerLetras(quantidade) {
 
 function separarConsoantes(letras) {
     let consoantes = [];
-    
+
     for (let i = 0; i < letras.length; i++) {
         let letra = letras[i];
-        if (letra !== "A" && letra !== "E" && letra !== "I" && letra !== "O" && letra !== "U") {
+        if (letra !== "A" &&
+            letra !== "E" &&
+            letra !== "I" &&
+            letra !== "O" &&
+            letra !== "U") {
             consoantes.push(letra);
         }
     }
@@ -49,10 +55,14 @@ function separarConsoantes(letras) {
 
 function separarVogais(letras) {
     let vogais = [];
-    
+
     for (let i = 0; i < letras.length; i++) {
         let letra = letras[i];
-        if (letra === "A" || letra === "E" || letra === "I" || letra === "O" || letra === "U") {
+        if (letra === "A" ||
+            letra === "E" ||
+            letra === "I" ||
+            letra === "O" ||
+            letra === "U") {
             vogais.push(letra);
         }
     }
@@ -73,7 +83,7 @@ function exibirSeparacao(consoantes, vogais) {
             mensagem += ", ";
         }
     }
-    
+
     mensagem += ` são as consoantes do algoritmo (${consoantes.length} consoantes).`;
     alert(mensagem);
 }

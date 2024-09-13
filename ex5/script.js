@@ -12,7 +12,7 @@ let impares = [];
 principal5();
 function principal5() {
     let option = menudeNumeros();
-    if (processarCadastro(option)) { 
+    if (processarCadastro(option)) {
         return;
     }
     separacaoNumeros(numeros);
@@ -21,7 +21,7 @@ function principal5() {
         return;
     }
 }
- 
+
 function menudeNumeros() {
     let opcao;
     let infoMenu = `Informe quantos números você deseja cadastrar:
@@ -30,22 +30,22 @@ function menudeNumeros() {
 3. Vinte e cinco números.
 4. Cinquenta números.
 5. Sair.`;
-    
+
     do {
         opcao = prompt(infoMenu);
         if (opcao !== "1" &&
-             opcao !== "2" &&
-              opcao !== "3" &&
-               opcao !== "4" &&
-                opcao !== "5") {
+            opcao !== "2" &&
+            opcao !== "3" &&
+            opcao !== "4" &&
+            opcao !== "5") {
             alert("Opção inválida. Por favor, escolha um número entre 1 e 5.");
         }
     } while (opcao !== "1" &&
-         opcao !== "2" &&
-          opcao !== "3" &&
-           opcao !== "4" &&
-            opcao !== "5");
-    
+    opcao !== "2" &&
+    opcao !== "3" &&
+    opcao !== "4" &&
+        opcao !== "5");
+
     return opcao;
 }
 
@@ -114,20 +114,20 @@ function menudeExibicao() {
 2. Somente os números Pares.
 3. Somente os números Ímpares.
 4. Mudei de ideia, não quero usar o algoritmo.`;
-    
+
     do {
         exibicao = prompt(infoMenu);
         if (exibicao !== "1" &&
-             exibicao !== "2" &&
-              exibicao !== "3" &&
-               exibicao !== "4") {
+            exibicao !== "2" &&
+            exibicao !== "3" &&
+            exibicao !== "4") {
             alert("Opção inválida. Por favor, escolha um número entre 1 e 4.");
         }
     } while (exibicao !== "1" &&
-         exibicao !== "2" &&
-          exibicao !== "3" &&
-           exibicao !== "4");
-    
+    exibicao !== "2" &&
+    exibicao !== "3" &&
+        exibicao !== "4");
+
     return exibicao;
 }
 

@@ -9,7 +9,7 @@ function principal1() {
 
 function leituraNumeros(quantidade) {
     let numeros = [];
-    
+
     for (let i = 0; i < quantidade; i++) {
         let numero;
         let entrada;
@@ -32,7 +32,7 @@ function leituraNumeros(quantidade) {
 
 function exibirNumeros(numeros) {
     let mensagem = `Os números digitados foram:`;
-    
+
     for (let i = 0; i < numeros.length; i++) {
         mensagem += ` ${numeros[i]}`;
         if (i < numeros.length - 2) {
