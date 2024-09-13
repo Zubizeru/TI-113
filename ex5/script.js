@@ -33,10 +33,18 @@ function menudeNumeros() {
     
     do {
         opcao = prompt(infoMenu);
-        if (opcao !== "1" && opcao !== "2" && opcao !== "3" && opcao !== "4" && opcao !== "5") {
+        if (opcao !== "1" &&
+             opcao !== "2" &&
+              opcao !== "3" &&
+               opcao !== "4" &&
+                opcao !== "5") {
             alert("Opção inválida. Por favor, escolha um número entre 1 e 5.");
         }
-    } while (opcao !== "1" && opcao !== "2" && opcao !== "3" && opcao !== "4" && opcao !== "5");
+    } while (opcao !== "1" &&
+         opcao !== "2" &&
+          opcao !== "3" &&
+           opcao !== "4" &&
+            opcao !== "5");
     
     return opcao;
 }
@@ -109,10 +117,16 @@ function menudeExibicao() {
     
     do {
         exibicao = prompt(infoMenu);
-        if (exibicao !== "1" && exibicao !== "2" && exibicao !== "3" && exibicao !== "4") {
+        if (exibicao !== "1" &&
+             exibicao !== "2" &&
+              exibicao !== "3" &&
+               exibicao !== "4") {
             alert("Opção inválida. Por favor, escolha um número entre 1 e 4.");
         }
-    } while (exibicao !== "1" && exibicao !== "2" && exibicao !== "3" && exibicao !== "4");
+    } while (exibicao !== "1" &&
+         exibicao !== "2" &&
+          exibicao !== "3" &&
+           exibicao !== "4");
     
     return exibicao;
 }
