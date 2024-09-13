@@ -1,8 +1,12 @@
-    /* Crie uma função que lê uma lista de 4 notas, mostre-as junto com a média no alert, considere que o 
+/* Crie uma função que lê uma lista de 4 notas, mostre-as junto com a média no alert, considere que o 
 usuário não pode informar letras, palavras ou vazio. Alerte-o do erro e repita a leitura caso ocorra. */
-    const notas = lerNotas(4);                     
-    const media = calcularMedia(notas);             
-    exibirNotaseMedia(notas, media);                
+principal2();
+function principal2() {
+    const quantidadeNotas = 4;
+    const notas = lerNotas(quantidadeNotas);
+    const media = calcularMedia(notas);
+    exibirNotaseMedia(notas, media);
+}
 
 function lerNotas(quantidade) {
     let notas = [];
@@ -10,9 +14,8 @@ function lerNotas(quantidade) {
         let nota;
         let entrada;
         do {
-            entrada = prompt(`Informe a ${i + 1}ª nota:`);
-
-            if (entrada.trim() === "") {
+            entrada = prompt(`Informe a ${i + 1}ª nota:`).trim();
+            if (entrada === "") {
                 alert("Espaço em branco. Por favor, digite uma nota válida.");
             } else {
                 nota = parseFloat(entrada);
@@ -20,8 +23,7 @@ function lerNotas(quantidade) {
                     alert("Número inválido. Por favor, digite uma nota válida.");
                 }
             }
-        } while (entrada.trim() === "" || isNaN(nota));
-        
+        } while (entrada === "" || isNaN(nota));
         notas.push(nota); 
     }
     return notas;
@@ -46,8 +48,6 @@ function exibirNotaseMedia(notas, media) {
             mensagem += ", ";
         }
     }
-
     mensagem += `\nMédia: ${media.toFixed(2)}`;
-
     alert(mensagem);
 }
