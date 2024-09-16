@@ -7,18 +7,15 @@ principal4();
 function principal4() {
     let nomes = [];
     let salarios = [];
-    let salariosLiquidos = [];
     let continuar = true;
-
     while (continuar && nomes.length < 50) {
-        cadastrarPessoa(nomes, salarios, salariosLiquidos);
-        let resposta = prompt("Deseja continuar o cadastro? (Digite 's' para sim ou 'n' para não)").toLowerCase();
-        continuar = (resposta === 's');
+        cadastrarPessoa(nomes, salarios);
+        continuar = confirm("Deseja continuar o cadastro?");
     }
-    exibirCadastro(nomes, salarios, salariosLiquidos);
+    exibirCadastro(nomes, salarios);
 }
 
-function cadastrarPessoa(nomes, salarios, salariosLiquidos) {
+function cadastrarPessoa(nomes, salarios) {
     let nome = '';
     let salario = 0;
     while (!nome) {
@@ -35,21 +32,19 @@ function cadastrarPessoa(nomes, salarios, salariosLiquidos) {
     }
     nomes.push(nome);
     salarios.push(salario);
-    salariosLiquidos.push(calcularSalarioLiquido(salario));
 }
 
-function calcularSalarioLiquido(salario) {
+function exibirCadastro(nomes, salarios) {
     const descontoINSS = 0.10;
-    return salario - (salario * descontoINSS);
-}
-
-function exibirCadastro(nomes, salarios, salariosLiquidos) {
     let mensagem = '';
-    for (let i = 0; i < nomes.length; i++) {
-        mensagem += `<b>Nome</b>: ${nomes[i]}<br>`;
-        mensagem += `<b>Salário bruto</b>: R$${salarios[i].toFixed(2)}<br>`;
-        mensagem += `<b>Salário líquido</b>: R$${salariosLiquidos[i].toFixed(2)}<br><br>`;
-    }
 
+    for (let i = 0; i < nomes.length; i++) {
+        let salarioBruto = salarios[i];
+        let salarioLiquido = salarioBruto - (salarioBruto * descontoINSS);
+        mensagem += `<b>Nome</b>: ${nomes[i]}<br>`;
+        mensagem += `<b>Salário bruto</b>: R$${salarioBruto.toFixed(2)}<br>`;
+        mensagem += `<b>Salário líquido</b>: R$${salarioLiquido.toFixed(2)}<br><br>`;
+    }
     document.write(mensagem);
 }
+
