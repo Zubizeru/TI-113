@@ -1,16 +1,15 @@
 /* Crie um algoritmo usando funções que tenha um menu de cadastro de nomes e salários bruto de até 
 50 pessoas, e ao final, mostre os nomes, salários brutos e os salários líquidos de todos que foram lidos, 
 considerando 10% de INSS a descontar. */
-// Arrays para armazenar os dados
-// Função que exibe o menu principal e controla o cadastro de pessoas
 principal4();
 function principal4() {
     let nomes = [];
     let salarios = [];
     let continuar = true;
+
     while (continuar && nomes.length < 50) {
         cadastrarPessoa(nomes, salarios);
-        continuar = confirm("Deseja continuar o cadastro?");
+        continuar = confirm("Deseja continuar o cadastro? (OK para sim, Cancelar para não)");
     }
     exibirCadastro(nomes, salarios);
 }
@@ -35,9 +34,8 @@ function cadastrarPessoa(nomes, salarios) {
 }
 
 function exibirCadastro(nomes, salarios) {
-    const descontoINSS = 0.10;
     let mensagem = '';
-
+    const descontoINSS = 0.10;
     for (let i = 0; i < nomes.length; i++) {
         let salarioBruto = salarios[i];
         let salarioLiquido = salarioBruto - (salarioBruto * descontoINSS);
@@ -45,6 +43,6 @@ function exibirCadastro(nomes, salarios) {
         mensagem += `<b>Salário bruto</b>: R$${salarioBruto.toFixed(2)}<br>`;
         mensagem += `<b>Salário líquido</b>: R$${salarioLiquido.toFixed(2)}<br><br>`;
     }
+
     document.write(mensagem);
 }
-
