@@ -14,7 +14,7 @@ function principal1() {
     let continuar = true;
 
     while (continuar && nomes.length < 100) {
-        cadastrarFuncionario(nomes, idades, salarios); 
+        cadastrarFuncionario(nomes, idades, salarios);
         if (nomes.length >= 5) {
             continuar = confirm("Deseja continuar o cadastro? (OK para sim, Cancelar para não)");
         }
@@ -32,19 +32,25 @@ function cadastrarFuncionario(nomes, idades, salarios) {
 
     // Cadastro do Nome
     do {
-        nome = prompt(`Informe nome e sobrenome do ${nomes.length + 1}º funcionário:`).trim();
-        if (nome === "") {
-            alert("Espaço em branco, por favor, digite um nome válido.");
-        } else if (!nome.includes(" ") || !isNaN(nome)) {
+        nome = prompt(`Informe nome e sobrenome do ${nomes.length + 1}º funcionário:`);
+        nome = nome.trim();
+        if (nome === '') {
+            alert("Espaço em branco. Por favor, informe seu nome e sobrenome.");
+        }
+        else if (/[0-9]/.test(nome)) {
+            alert("Nome não pode conter números. Por favor, informe seu nome e sobrenome.");
+        }
+        else if (nome.indexOf(" ") < 3) {
             alert("Nome inválido. Por favor, informe seu nome e sobrenome.");
         }
-    } while (nome === "" || !nome.includes(" "));
+    } while (nome.indexOf(" ") < 3 || /[0-9]/.test(nome) || nome === '');
 
     // Cadastro da Idade
     do {
-        idade = prompt(`Informe a idade do ${nomes.length + 1}º funcionário:`).trim();
+        idade = prompt(`Informe a idade do ${nomes.length + 1}º funcionário:`);
+        idade = idade.trim();
         if (idade === "") {
-            alert("Espaço em branco, por favor, digite uma idade válida.")
+            alert("Espaço em branco, por favor, digite uma idade válida.");
         } else {
             idade = parseInt(idade);
             if (isNaN(idade) || idade <= 14 || idade >= 120) {
@@ -55,7 +61,8 @@ function cadastrarFuncionario(nomes, idades, salarios) {
 
     // Cadastro do Salário
     do {
-        salario = prompt(`Informe o salário da ${nomes.length + 1}ª pessoa:`).trim();
+        salario = prompt(`Informe o salário da ${nomes.length + 1}ª pessoa:`);
+        salario = salario.trim();
         if (salario === "") {
             alert("Espaço em branco, por favor, digite um salário válido.");
         } else {
@@ -67,8 +74,8 @@ function cadastrarFuncionario(nomes, idades, salarios) {
     } while (isNaN(salario) || salario <= 2000 || salario >= 20000);
 
     nomes.push(nome);
-    salarios.push(salario);
     idades.push(idade);
+    salarios.push(salario);
 }
 
 function exibirCadastrodeFuncionario(nomes, idades, salarios) {

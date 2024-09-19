@@ -42,13 +42,13 @@ function obterNome(indice) {
 
         if (nome === "") {
             alert("Nome inválido. O campo não pode estar vazio.");
-        } else if (!isNaN(nome)) {
-            alert("Nome inválido. O nome não pode ser um número.");
-        } else if (!nome.includes(" ")) {
+        } else if (/[0-9]/.test(nome)) {
+            alert("Nome inválido. O nome não pode conter números.");
+        } else if (nome.indexOf(" ") < 3) {
             alert("Nome inválido. Você deve informar seu nome e sobrenome.");
         }
 
-    } while (nome === "" || !isNaN(nome) || !nome.includes(" "));
+    } while (nome.indexOf(" ") < 3 || /[0-9]/.test(nome) || nome === '');
     return nome;
 }
 
@@ -109,7 +109,7 @@ function obterMateria(indice) {
                 break;
             default:
                 alert("Matéria inválida. Por favor, escolha uma das opções disponíveis.");
-                materia = ""; // Reset para continuar o loop
+                materia = "";
         }
 
     } while (materia === "");
@@ -137,9 +137,9 @@ function obterNotas(indice) {
 }
 
 function calculoDeMedia(notas) {
-    let soma = 0; 
+    let soma = 0;
     for (let i = 0; i < notas.length; i++) {
-        soma += notas[i]; 
+        soma += notas[i];
     }
     return soma / notas.length;
 }
