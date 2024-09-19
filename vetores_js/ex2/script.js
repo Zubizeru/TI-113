@@ -39,10 +39,16 @@ function obterNome(indice) {
     let nome;
     do {
         nome = prompt(`Informe nome e sobrenome do ${indice}º aluno:`).trim();
-        if (nome === "" || !nome.includes(" ") || !isNaN(nome)) {
-            alert("Nome inválido. Por favor, informe seu nome e sobrenome.");
+
+        if (nome === "") {
+            alert("Nome inválido. O campo não pode estar vazio.");
+        } else if (!isNaN(nome)) {
+            alert("Nome inválido. O nome não pode ser um número.");
+        } else if (!nome.includes(" ")) {
+            alert("Nome inválido. Você deve informar seu nome e sobrenome.");
         }
-    } while (nome === "" || !nome.includes(" "));
+
+    } while (nome === "" || !isNaN(nome) || !nome.includes(" "));
     return nome;
 }
 
@@ -50,20 +56,62 @@ function obterMatricula(indice) {
     let matricula;
     do {
         matricula = prompt(`Informe o número da ${indice}º matrícula (8 dígitos):`).trim();
-        if (matricula.length !== 8 || isNaN(matricula)) {
-            alert("Matrícula inválida, por favor, informe uma matrícula com 8 dígitos.");
+
+        if (matricula === "") {
+            alert("Matrícula inválida. O campo não pode estar vazio.");
+        } else if (matricula.length !== 8) {
+            alert("Matrícula inválida. A matrícula deve ter exatamente 8 dígitos.");
+        } else if (isNaN(matricula)) {
+            alert("Matrícula inválida. A matrícula deve conter apenas números.");
         }
-    } while (matricula.length !== 8 || isNaN(matricula));
+
+    } while (matricula === "" || matricula.length !== 8 || isNaN(matricula));
     return matricula;
 }
 
 function obterMateria(indice) {
     let materia;
     do {
-        materia = prompt(`Informe a matéria da ${indice}ª pessoa:`).trim();
-        if (materia === "") {
-            alert("Espaço em branco, por favor, digite uma matéria válida.");
+        materia = prompt(`Escolha a matéria da ${indice}ª pessoa (Digite o número correspondente):
+        1. Matemática
+        2. Português
+        3. História
+        4. Geografia
+        5. Física
+        6. Química
+        7. Biologia
+        8. Inglês`).trim();
+
+        switch (materia) {
+            case "1":
+                materia = "Matemática";
+                break;
+            case "2":
+                materia = "Português";
+                break;
+            case "3":
+                materia = "História";
+                break;
+            case "4":
+                materia = "Geografia";
+                break;
+            case "5":
+                materia = "Física";
+                break;
+            case "6":
+                materia = "Química";
+                break;
+            case "7":
+                materia = "Biologia";
+                break;
+            case "8":
+                materia = "Inglês";
+                break;
+            default:
+                alert("Matéria inválida. Por favor, escolha uma das opções disponíveis.");
+                materia = ""; // Reset para continuar o loop
         }
+
     } while (materia === "");
     return materia;
 }
@@ -89,7 +137,10 @@ function obterNotas(indice) {
 }
 
 function calculoDeMedia(notas) {
-    const soma = notas.reduce((acc, nota) => acc + nota, 0);
+    let soma = 0; 
+    for (let i = 0; i < notas.length; i++) {
+        soma += notas[i]; 
+    }
     return soma / notas.length;
 }
 
@@ -97,9 +148,7 @@ function exibirCadastrodeAlunos(nomes, matriculas, materias, notas) {
     let mensagem = '';
     for (let i = 0; i < nomes.length; i++) {
         const media = calculoDeMedia(notas[i]);
-        mensagem += `Nome: ${nomes[i]}<br> Matrícula: ${matriculas[i]}<br> <b>Matéria</b>: ${materias[i]}<br> Nota 1:${notas[i][0].toFixed(2)} / Nota 2:${notas[i][1].toFixed(2)} / Nota 3:${notas[i][2].toFixed(2)}<br> Média: ${media.toFixed(2)}<br><br>`;
+        mensagem += `<b>Nome</b>: ${nomes[i]}<br><b>Matrícula</b>: ${matriculas[i]}<br> <b>Matéria</b>: ${materias[i]}<br> <b>Nota 1</b>: ${notas[i][0].toFixed(2)} / <b>Nota 2</b>: ${notas[i][1].toFixed(2)} / <b>Nota 3</b>: ${notas[i][2].toFixed(2)}<br> <b>Média</b>: ${media.toFixed(2)}<br><br>`;
     }
     document.write(mensagem);
 }
-
-
